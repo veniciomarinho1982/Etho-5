@@ -6,7 +6,7 @@ public without sharing class JogadoresTriggerHandler {
     }
 
     private static void beforeUpdate(Jogador__c record,Jogador__c recordOld){
-        if(isChanged(recordOld.Eliminado__c,record.Eliminado__c)){
+        if(isChanged(recordOld.Eliminado__c,record.Eliminado__c )){
             record.Data_da_Morte__c = System.now();//atribuição
         }        
     }
