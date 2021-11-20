@@ -32,5 +32,4 @@ public without sharing class RoundsTriggerHandler {
         }
     }
 
-
 }
