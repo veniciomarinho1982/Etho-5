@@ -5,7 +5,7 @@
     <description>Jogadores sem regalias.</description>
     <label>Jogador Padrão</label>
     <picklistValues>
-        <picklist>Retonar_ao_Jogo__c</picklist>
+        <picklist>RetonarJogo__c</picklist>
         <values>
             <fullName>Não</fullName>
             <default>false</default>

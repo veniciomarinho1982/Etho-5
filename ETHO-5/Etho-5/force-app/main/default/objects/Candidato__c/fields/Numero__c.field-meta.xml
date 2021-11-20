@@ -3,7 +3,7 @@
     <fullName>Numero__c</fullName>
     <description>Pontuação  baseada ba idade e na divida</description>
     <externalId>false</externalId>
-    <formula>FLOOR( Valor_da_D_vida__c  /100) + 40000 - IF( Idade__c  &gt; 80,40000,( ABS( Idade__c -40) * 1000))</formula>
+    <formula>FLOOR( ValorDivida__c  /100) + 40000 - IF( Idade__c  &gt; 80,40000,( ABS( Idade__c -40) * 1000))</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <inlineHelpText>Pontuação  baseada ba idade e na divida</inlineHelpText>
     <label>Pontuacao</label>
