@@ -30,4 +30,8 @@ public without sharing class Utils {
                 
         return (y - x);
     }
+
+    public static void main(String[] args) {
+      
+    }
 }

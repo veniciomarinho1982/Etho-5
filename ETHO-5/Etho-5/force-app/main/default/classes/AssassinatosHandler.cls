@@ -1,11 +1,46 @@
 public with sharing class AssassinatosHandler {
-      List<Jogadores_c> jogadoresVivos = StatusSelector.selectByRoundsIdsWithJogadores('Andamento');
-      Integer qtdjogadoresVivos = jogadoresVivos.size();
+      
+    public static void execute(){  
+      List<Round__c> records = StatusRoundSelector.selectByRoundsIdsWithJogadores('Andamento');
+  
+      for (Round__c record : records) {
+            handleAssassinato(record);
+      } 
+    }
+   
+    private static void randomAssassinato(Round__c record) {
+      Lit<Jogador__c> jogadores = round.Jogadores__r;
+      Integer qtdJogadoresVivos = jogadores.size();
 
-      Integer randomAssassino = Utils.generateRandomIntegerBetween(qtdjogadoresVivos-1);
-      Integer randomAssassinado = Utils.generateRandomIntegerBetween(qtdjogadoresVivos-1);
- 
-      Jogador__c atacante = jogadoresVivos.get(randomAssassino);
-      Jogador__c atacante = jogadoresVivos.get(randomAssassinado);
- 
-    }    
+      if (qtdJogadoresVivos >1)
+      {
+         jogador__c atacante = Utils.generateRandomIntegerBetween(qtdJogadoresVivos,qtdJogadoresVivos-1);
+         jogador__c defensor = Utils.generateRandomIntegerBetween(qtdJogadoresVivos,qtdJogadoresVivos-1);
+         
+         handleAtributo(atacante,defensor,qtdJogadoresVivos) ;
+         handleAssassinato(atacante,defesa,qtdJogadoresVivos); 
+      }
+    }
+    
+    private static void handleAssassinato(Jogador__c atacante, Jogador__c defensor, Lit<Jogador__c> qtdJogadoresVivos) {
+              
+        if (ataque > defesa) {
+            setValue(defesa, Jogador__c.Morreu__c, true);
+        } else{
+                if (ataque < defesa) && (dadoAtacante = 1){
+                     handleAtributo(defensor,atacante,qtdJogadoresVivos) ;
+                }
+        } else
+            setValue(atacante, Jogador__c.Morreu__c, true);
+        }       
+    }
+
+    private static void handleAtributo(Integer ataque, Integer defesa, Integer qtdJogadoresVivos) {
+        Integer dadoAtacante = Utils.generateRandomIntegerBetween(qtdJogadoresVivos,-1);
+        Integer ataque = dadoAtacante + atacante.Forca__c;
+        Integer defesa = Utils.generateRandomIntegerBetween(qtdJogadoresVivos,-1)+
+                         Utils.generateRandomIntegerBetween(qtdJogadoresVivos,+1)+
+                         defensor.Inteligencia__c+defensor.Velocidade__c;          
+        handleAssassinato(atacante,  defensor);                  
+    } 
+}    
