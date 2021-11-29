@@ -30,8 +30,8 @@ public with sharing class AssassinatosHandler {
                 if (ataque < defesa) && (dadoAtacante = 1){
                      handleAtributo(defensor,atacante,qtdJogadoresVivos) ;
                 }
-        } else
-            setValue(atacante, Jogador__c.Morreu__c, true);
+        } 
+        setValue(atacante, Jogador__c.Morreu__c, true);
         }       
     }
 
