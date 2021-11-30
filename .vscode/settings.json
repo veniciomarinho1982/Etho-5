@@ -5,8 +5,8 @@
     "**/.sfdx": true
   },
   "salesforcedx-vscode-core.show-cli-success-msg": false,
+  "vlocity.sfdxUsername": "veniciomarinho@resourceful-fox-20vmor.com",
   "workbench.colorCustomizations": {
     "statusBar.background": null
-  },
-  "vlocity.sfdxUsername": "veniciomarinho@resourceful-fox-20vmor.com"
+  }
 }
