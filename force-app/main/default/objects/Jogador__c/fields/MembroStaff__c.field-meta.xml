@@ -4,7 +4,7 @@
     <deleteConstraint>SetNull</deleteConstraint>
     <description>Usado quando o jogador é um membro da staff</description>
     <externalId>false</externalId>
-    <inlineHelpText>Informe o jogador é um membro da staff</inlineHelpText>
+    <inlineHelpText>Informe o jogador membro da staff</inlineHelpText>
     <label>Membro da Staff</label>
     <referenceTo>User</referenceTo>
     <relationshipName>Jogadores</relationshipName>

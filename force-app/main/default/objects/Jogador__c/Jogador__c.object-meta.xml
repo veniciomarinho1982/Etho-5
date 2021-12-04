@@ -157,7 +157,7 @@
     <gender>Masculine</gender>
     <label>Jogador</label>
     <nameField>
-        <displayFormat>Jogador-{00000}</displayFormat>
+        <displayFormat>Jogador-{000}</displayFormat>
         <label>Número do Jogador</label>
         <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>

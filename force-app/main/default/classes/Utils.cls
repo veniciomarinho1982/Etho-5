@@ -17,21 +17,18 @@ public without sharing class Utils {
     //retornar número aleatório entre X e Y (inclusivo)
     //x <= retorno <= y
     public static Integer generateRandomIntegerBetween(Integer x, Integer y) {
-        
-        // definir valores minimos e maximo
-        int min = x; // inclusive
-        int max = y; // exclusive
-
-        // Gerar um double entre min e max
-        double randomDouble = Math.random() * (max - min + 1) + min;
-      
-        // Gerar um inteiro entre min e max
-        int randomInt = (int) (Math.random() * (max - min + 1) + min);
-                
         return (y - x);
     }
 
-    public static void main(String[] args) {
-      
+    public static Integer geraNumero(Integer valorInicial, Integer valorFinal, Integer valorParaSeEvitar) {
+        if (valorFinal > valorInicial) {
+            Integer valor;
+            while (valor == null || valor == valorParaSeEvitar) {
+                //TODO: garantir que não vai ficar com o valorParaSeEvitar repetindo
+                valor = valorInicial + Integer.valueof(Math.random() * ((valorFinal - valorInicial) + 1));
+            }
+            return valor;
+        } 
+        return -1;
     }
 }
