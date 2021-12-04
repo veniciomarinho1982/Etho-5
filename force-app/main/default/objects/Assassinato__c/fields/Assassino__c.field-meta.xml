@@ -5,7 +5,7 @@
     <label>Assassino(a)</label>
     <referenceTo>Jogador__c</referenceTo>
     <relationshipLabel>Assassinatos (Assassino)</relationshipLabel>
-    <relationshipName>Assassinos</relationshipName>
+    <relationshipName>Assassinos2</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackHistory>false</trackHistory>
