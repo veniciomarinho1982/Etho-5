@@ -7,7 +7,7 @@
     <label>Round</label>
     <referenceTo>Round__c</referenceTo>
     <relationshipLabel>Jogadores</relationshipLabel>
-    <relationshipName>Jogadores2</relationshipName>
+    <relationshipName>Jogadores</relationshipName>
     <relationshipOrder>0</relationshipOrder>
     <reparentableMasterDetail>false</reparentableMasterDetail>
     <trackFeedHistory>false</trackFeedHistory>

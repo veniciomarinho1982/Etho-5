@@ -5,6 +5,17 @@
     <description>Jogador membro da Staff</description>
     <label>Membro da Staff</label>
     <picklistValues>
+        <picklist>RetonarJogo__c</picklist>
+        <values>
+            <fullName>Não</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sim</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>RetornarJogo__c</picklist>
         <values>
             <fullName>Não</fullName>
