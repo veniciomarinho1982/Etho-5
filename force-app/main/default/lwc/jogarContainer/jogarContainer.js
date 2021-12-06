@@ -1,9 +1,10 @@
-import { LightningElement, wire, track } from "lwc";
+import { LightningElement, wire } from "lwc";
 import selectAll from "@salesforce/apex/SimulacaoContainerController.getRoundsJogadores";
 import tentarMatar from "@salesforce/apex/SimulacaoContainerController.tentativaAssassinato";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 export default class JogarContainer extends LightningElement {
+  //aux = { Name: "Bla" };
   rounds = [];
   roundSelecionado;
   @wire(selectAll) listOfObjectDetails({ error, data }) {
@@ -42,14 +43,17 @@ export default class JogarContainer extends LightningElement {
 
   handleClick(event) {
     event.preventDefault();
-    tentarMatar({ jogadores: this.roundSelecionadoCerto.Jogadores2__r })
+    //this.aux.Name = "Ble";
+    //this.aux = { ...this.aux, Name: "Ble" };
+    tentarMatar({ jogadores: this.roundSelecionadoCerto.Jogadores__r })
       .then((result) => {
         if (result) {
           const assassinato = result.Assassinato;
           if (assassinato) {
             const assassino = this.getJogadorById(assassinato.Assassino__c);
             const assassinado = this.getJogadorById(assassinato.Assassinado__c);
-            this.updateRound(assassinato.Assassinado__c);
+            this.rounds = result.Rounds;
+            //this.updateRound(assassinato.Assassinado__c);
             let message = "Assassino: " + assassino.Name + "\n";
             message += "Assassinado: " + assassinado.Name;
             this.showToast("Assassinato", message, "success", "sticky");
@@ -69,7 +73,7 @@ export default class JogarContainer extends LightningElement {
   }
 
   getJogadorById(id) {
-    return this.roundSelecionadoCerto.Jogadores2__r.find(
+    return this.roundSelecionadoCerto.Jogadores__r.find(
       (jogador) => jogador.Id == id
     );
   }
@@ -86,7 +90,7 @@ export default class JogarContainer extends LightningElement {
 
   updateRound(idAssassinado) {
     let round = this.roundSelecionadoCerto;
-    let jogadoresRound = round.Jogadores2__r;
+    let jogadoresRound = [...round.Jogadores__r];
     jogadoresRound = [
       ...jogadoresRound.map((jogador) => {
         if (jogador.Id == idAssassinado) {
@@ -96,7 +100,7 @@ export default class JogarContainer extends LightningElement {
       })
     ];
 
-    round = { ...round, Jogadores2__r: jogadoresRound };
+    round = { ...round, Jogadores__r: jogadoresRound };
     this.rounds = [
       ...this.rounds.map((roundAux) => {
         if (roundAux.Id == round.Id) {

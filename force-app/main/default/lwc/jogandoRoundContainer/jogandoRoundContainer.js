@@ -5,7 +5,7 @@ export default class JogandoRoundContainer extends LightningElement {
 
   get jogadores() {
     if (this.roundSelecionado) {
-      return this.roundSelecionado.Jogadores2__r;
+      return this.roundSelecionado.Jogadores__r;
     }
     return [];
   }

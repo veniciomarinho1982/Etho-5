@@ -39,7 +39,7 @@ public without sharing class JogadoresTriggerHandler {
         if (roundRecord != null) {
             System.debug('handle vencedor');
             System.debug('roundsToUpdate.containsKey(roundRecord.Id): ' + (roundsToUpdate.containsKey(roundRecord.Id)));
-            System.debug('roundRecord.Jogadores__r.size() == 1: ' + (roundRecord.Jogadores__r.size() == 1));
+            System.debug('roundRecord.Jogadores2__r.size() == 1: ' + (roundRecord.Jogadores__r.size() == 1));
             if (!roundsToUpdate.containsKey(roundRecord.Id) && roundRecord.Jogadores__r.size() == 1) {
                 System.debug('ENTROUUUU BORA SETAR O VENCEDOR FILHA DAS PUTA');
     
