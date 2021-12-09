@@ -19,13 +19,11 @@ public without sharing class RoundsSelector {
                     (
                         SELECT Id, Nick__c, Candidato__r.Name
                         FROM Jogadores__r 
-                        WHERE Eliminado__c = true
+                       // WHERE Eliminado__c = true
                     )
             FROM Round__c
         ];
     }
-
-
 
     public static List<Round__c> selectRoundsByIdStatusJogadoresVivos(Set<Id> roundsIds, Set<String> statusList) {
         return [

@@ -6,7 +6,7 @@
     <inlineHelpText>Contagem dos jogadores que votaram para voltar aos jogos.</inlineHelpText>
     <label>Votos Prosseguir</label>
     <summaryFilterItems>
-        <field>Jogador__c.RetornarJogo__c</field>
+        <field>Jogador__c.RetonarJogo__c</field>
         <operation>equals</operation>
         <value>Sim</value>
     </summaryFilterItems>

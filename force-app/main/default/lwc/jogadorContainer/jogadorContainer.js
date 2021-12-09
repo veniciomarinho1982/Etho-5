@@ -1,9 +1,6 @@
-import { api, LightningElement } from "lwc";
+import { LightningElement,api } from "lwc";
 
 export default class JogadorContainer extends LightningElement {
   @api jogador;
-
-  get vivoMortoClass() {
-    return this.jogador.Morreu__c ? "morto" : "vivo";
-  }
+  @api index;
 }

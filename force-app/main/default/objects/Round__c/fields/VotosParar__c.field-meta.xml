@@ -6,7 +6,7 @@
     <inlineHelpText>quantidade de votos para encerrar o round</inlineHelpText>
     <label>Votos Parar</label>
     <summaryFilterItems>
-        <field>Jogador__c.RetornarJogo__c</field>
+        <field>Jogador__c.RetonarJogo__c</field>
         <operation>equals</operation>
         <value>Não</value>
     </summaryFilterItems>
