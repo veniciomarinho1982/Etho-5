@@ -10,7 +10,6 @@ public without sharing class JogadoresTriggerHandler {
         update jogadores;
     }
     
-
     public static void afterUpdate(List<Jogador__c> records, Map<Id, Jogador__c> oldMap) {
         Set<String> statusList = new Set<String>{'Em Andamento'};
         Map<Id, Round__c> roundsMap = new Map<Id, Round__c>(RoundsSelector.selectRoundsByIdStatusJogadoresVivos(Utils.getSetIds(records, Jogador__c.Round__c), statusList));
