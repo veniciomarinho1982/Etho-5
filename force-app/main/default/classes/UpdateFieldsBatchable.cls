@@ -1,21 +1,26 @@
-global with sharing class UpdateCandidatosBatchable implements Database.Batchable<SObject>, Database.Stateful 
+global with sharing class UpdateFieldsBatchable implements Database.Batchable<SObject>, Database.Stateful 
 {
-    private String query;
-    global String errorMessageHtml;
+    global final String Query;
+    global final String Entity;
+    global final String Field;
+    global final String Value;
+    global  String errorMessageHtml;
 
-    global UpdateCandidatosBatchable()
-    {
-        errorMessageHtml = '';
-        query = CandidatoSelector.getQueryLocatorCEPBatchable();
+    global UpdateFieldsBatchable(String q, String e, String f, String v){
+            Query=q; Entity=e; Field=f;Value=v;  
+            errorMessageHtml   = '';        
     }
 
     global Database.QueryLocator start(Database.BatchableContext BC)
-    {
+    {  
         return Database.getQueryLocator(query);
     }
 
-    global void execute(Database.BatchableContext BC, List<SObject> scope)
-    {
+    global void execute(Database.BatchableContext BC, List<sObject> scope){
+      for(Sobject s : scope){s.put(Field,Value); 
+      }      
+        update scope;            
+       
         List<Database.SaveResult> srList = Database.update(scope, false);
         
         handleLog(srList, scope);
@@ -25,8 +30,9 @@ global with sharing class UpdateCandidatosBatchable implements Database.Batchabl
     {
         sendLog();
     }
-
-    private void handleLog(List<Database.SaveResult> srList, List<Candidato__c> scope)
+        
+   
+    private void handleLog(List<Database.SaveResult> srList, List<SObject>  scope)
     {
         for (Integer i = 0; i < scope.size(); i++)
         {
@@ -40,7 +46,7 @@ global with sharing class UpdateCandidatosBatchable implements Database.Batchabl
             }
         }
     }
-
+    
     private void sendLog()
     {
         Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
