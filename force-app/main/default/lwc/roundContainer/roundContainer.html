@@ -1,6 +1,8 @@
 <template>
   <div class="container" onclick={handleClick}>
-    <div>{round.Name}</div>
+    <div class="container-round">
+      <div>{round.Name}</div>
+    </div>
     <div>Lista de jogadores:</div>
       <div class ="container-jogadores">
         <template for:each={round.Jogadores__r} for:item="jogador" for:index="i">

@@ -4,7 +4,7 @@ global with sharing class UpdateFieldsBatchable implements Database.Batchable<SO
     global final String Entity;
     global final String Field;
     global final String Value;
-    global  String errorMessageHtml;
+    global String errorMessageHtml;
 
     global UpdateFieldsBatchable(String q, String e, String f, String v){
             Query=q; Entity=e; Field=f;Value=v;  

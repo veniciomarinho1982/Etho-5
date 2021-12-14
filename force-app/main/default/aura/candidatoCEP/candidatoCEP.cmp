@@ -1,3 +1,4 @@
-<aura:component>
+<!--quickAdd.cmp-->
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
 
-</aura:component>	
+</aura:component>

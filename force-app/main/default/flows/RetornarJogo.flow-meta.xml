@@ -270,5 +270,5 @@
             <targetReference>TelaEmail</targetReference>
         </connector>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
 </Flow>

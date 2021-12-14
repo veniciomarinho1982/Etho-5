@@ -1,28 +1,22 @@
 public with sharing class MapsFields {
         private String query;
-
-        Map<Schema.SObjectField, Object> fieldsValuesMap = new Map<Schema.SObjectField, Object> ();
-               
-        String e = 'Lead'; // Object to be updated
-	    String f = 'LeadSource'; // field to be updated.
-	    String v = 'DarkWeb'; // value with which field will be populated.
-	    String q = 'SELECT ' + f + ' FROM ' + e; // Query to which more filters can be added like: + 'AND IsConverted = false';
+             
+          String e = 'Account'; // Object to be updated
+	    String f = 'BillingState'; // field to be updated.
+	    String v = 'RJ'; // value with which field will be populated.
+        //  String condicao = 'Name = keu confeitaria'; // value with which field will be populated.
+	    String q = 'SELECT BillingState FROM ' + e + ' WHERE ' + f + '';
+          //querySelector.getQueryWhereSelector(e, f, condicao) ; // Query to which more filters can be added like: + 'AND IsConverted = false';
 	    
+        Map<Schema.SObjectField, Object> fieldsValuesMap = new Map<Schema.SObjectField, Object> ();
+          //  Account.Name         => BillingState,
+           // Account.BillingState => 'RJ'
+            Integer count = 200;
+            List<Account> changedAccount = [Select ID, Name from Account where Name = 'keu confeitaria'];
+           // for(Account ld : changedAccount){
+           // }
+        
 
-
-    //    Database.executeBatch(new UpdateFieldsBatchable(query,null));
-            
-
-
-       // Map<Schema.SObjectField, Object> fieldsValuesMap = new Map<Schema.SObjectField, Object> {
-       //     Candidato__c.CEPAlterado__c => false,
-       //     Candidato__c.DataUltimaBatch__c => System.today()
-      //  };
-
-       // Map<Schema.SObjectField, Object> fieldsValuesMap = new Map<Schema.SObjectField, Object> {
-       //     Round__c.Status__c => 'Finalizado',
-       //     Candidato__c.Name => 'soifjf'
-       // };
-
-      // Database.executeBatch(new UpdateFieldsBatchable(null,null));
+        Id batchInstanceId0 = Database.executeBatch(new UpdateFieldsBatchable(q,e,f,v));
+        
 }
