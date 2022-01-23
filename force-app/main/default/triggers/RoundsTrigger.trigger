@@ -1,7 +1,7 @@
-trigger RoundsTrigger on Round__c (after update) {
+trigger VendasOrgaosTrigger on VendasOrgaos__c (before update) {
 
     if (Trigger.isAfter && Trigger.isUpdate) {
-        RoundsTriggerHandler.afterUpdate(Trigger.new, Trigger.oldMap);
+        VendasOrgaosTriggerHandler.afterUpdate(Trigger.new, Trigger.oldMap);
     }    
 
 }

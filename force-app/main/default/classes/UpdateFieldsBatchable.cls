@@ -1,39 +1,37 @@
-global with sharing class UpdateFieldsBatchable implements Database.Batchable<SObject>, Database.Stateful 
-{
-    global final String Query;
-    global final String Entity;
-    global final String Field;
-    global final String Value;
-    global String errorMessageHtml;
+public with sharing class UpdateFieldsBatchable implements Database.Batchable<SObject>, Database.Stateful{
+    
+    String query;
+    Map<SObjectField, Object> mapa;
+    String errorMessageHtml;
 
-    global UpdateFieldsBatchable(String q, String e, String f, String v){
-            Query=q; Entity=e; Field=f;Value=v;  
-            errorMessageHtml   = '';        
+    public UpdateFieldsBatchable(String query, Map<SObjectField, Object> mapa){
+            this.query = query;
+            this.mapa = mapa;
+            this.errorMessageHtml   = '';        
     }
-
-    global Database.QueryLocator start(Database.BatchableContext BC)
-    {  
+    
+    public Database.QueryLocator start(Database.BatchableContext BC){  
         return Database.getQueryLocator(query);
     }
-
-    global void execute(Database.BatchableContext BC, List<sObject> scope){
-      for(Sobject s : scope){s.put(Field,Value); 
-      }      
-        update scope;            
-       
-        List<Database.SaveResult> srList = Database.update(scope, false);
-        
-        handleLog(srList, scope);
+    
+    public void execute(Database.BatchableContext BC, List<sObject> scope){
+      
+      for(Sobject record : scope){      
+         for (Schema.SObjectField key : mapa.keySet()){
+             record.put(key, mapa.get(key));
+         }    
+      }
+      
+      List<Database.SaveResult> srList = Database.update(scope, false);
+      handleLog(srList, scope);
     }
 
-    global void finish(Database.BatchableContext BC)
-    {
+    public void finish(Database.BatchableContext BC){
         sendLog();
     }
         
    
-    private void handleLog(List<Database.SaveResult> srList, List<SObject>  scope)
-    {
+    private void handleLog(List<Database.SaveResult> srList, List<SObject>  scope){
         for (Integer i = 0; i < scope.size(); i++)
         {
             if (!srList.get(i).isSuccess())
@@ -47,8 +45,7 @@ global with sharing class UpdateFieldsBatchable implements Database.Batchable<SO
         }
     }
     
-    private void sendLog()
-    {
+    private void sendLog(){
         Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
         message.setToAddresses(new List<String>{'veniciomarinho@hotmail.com'});
         message.setSubject('Log de erros');

@@ -12,6 +12,14 @@ public without sharing class RoundsSelector {
             WHERE Id IN :ids
         ];
     }
+
+    public static List<Jogador__c> selectByJogadoresIds(Set<Id> ids) {
+        return [
+            SELECT  Id, Name
+            FROM Jogador__c 
+            WHERE Id IN :ids
+        ];
+    }
     
     public static List<Round__c> selectAllRoundsWithJogadores() {
         return [

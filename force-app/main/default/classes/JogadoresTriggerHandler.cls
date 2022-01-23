@@ -88,7 +88,7 @@ public without sharing class JogadoresTriggerHandler {
         if (ehJogadorPadrao(record) && foiEliminado(record, recordOld)) {
             Utils.setValue(record, Jogador__c.Morreu__c, true);
         }
-
+         Set<Id> ids = new Set<Id>();
         if (morreu(record, recordOld)) {
             Utils.setValue(record, Jogador__c.DataMorte__c, System.now());
             Utils.setValue(record, Jogador__c.Eliminado__c, true);
